@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/RaftLabAssesment_Reactjs/static/css/main.4635cdc8.css",
+    "main.js": "/RaftLabAssesment_Reactjs/static/js/main.0933d47d.js",
+    "static/js/787.49616aef.chunk.js": "/RaftLabAssesment_Reactjs/static/js/787.49616aef.chunk.js",
+    "static/media/ProfilePic1.jpg": "/RaftLabAssesment_Reactjs/static/media/ProfilePic1.6b73fd246a999fb8e32e.jpg",
+    "static/media/ProfilePic.jpg": "/RaftLabAssesment_Reactjs/static/media/ProfilePic.44ecfad2a6375fe64109.jpg",
+    "static/media/ProfilePic2.jpg": "/RaftLabAssesment_Reactjs/static/media/ProfilePic2.7a2f12df7485b65d348f.jpg",
+    "static/media/GoogleMeet2.jpg": "/RaftLabAssesment_Reactjs/static/media/GoogleMeet2.3d5c38e1325f6d36cf5e.jpg",
+    "static/media/GoogleMeet3.jpg": "/RaftLabAssesment_Reactjs/static/media/GoogleMeet3.0a25cbf3dcc321fe112a.jpg",
+    "static/media/GoogleMeet1.jpg": "/RaftLabAssesment_Reactjs/static/media/GoogleMeet1.960981d520c7006e542e.jpg",
+    "static/media/MoneyImg.svg": "/RaftLabAssesment_Reactjs/static/media/MoneyImg.de59b1760d0457033673deffa73eb65f.svg",
+    "index.html": "/RaftLabAssesment_Reactjs/index.html",
+    "main.4635cdc8.css.map": "/RaftLabAssesment_Reactjs/static/css/main.4635cdc8.css.map",
+    "main.0933d47d.js.map": "/RaftLabAssesment_Reactjs/static/js/main.0933d47d.js.map",
+    "787.49616aef.chunk.js.map": "/RaftLabAssesment_Reactjs/static/js/787.49616aef.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4635cdc8.css",
+    "static/js/main.0933d47d.js"
+  ]
+}
