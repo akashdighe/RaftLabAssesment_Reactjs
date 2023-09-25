@@ -1,0 +1,277 @@
+.sideBarContainer {
+    border-right: 1px solid rgb(233, 226, 226);
+}
+
+.SidebarMenuTxt {
+    color: black;
+    font-size: 15px
+}
+
+.SidebarMenuTxt:hover {
+    font-size: 15px;
+    /* color: white !important; */
+
+}
+
+.ContainerMenuTxt {
+    padding: 5px;
+
+}
+
+.ContainerMenuTxt:hover {
+    background-color: rgb(158, 158, 226);
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+
+}
+
+.ContainerMenuTxtActive {
+    background-color: rgb(107, 107, 240);
+    padding: 5px;
+    border-radius: 5px;
+    color: white !important;
+
+}
+
+.Tools {
+    font-size: 12px;
+    color: rgb(133, 131, 131);
+}
+
+
+/* HomePagecss  */
+.profilepicImg {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+
+}
+
+.headingtext {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.headingSubText {
+    color: rgb(133, 131, 131);
+    font-size: 12px;
+}
+
+.monethlyRevenue {
+    font-size: 14px;
+    color: rgb(228, 219, 219);
+}
+
+.ContanerPriceAction {
+    background-color: rgb(109, 109, 236);
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Doller {
+    font-weight: bold;
+    font-size: 19px;
+    color: white;
+}
+
+.previousDoller {
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+}
+
+.dollerPersentage {
+    background-color: white;
+    color: rgb(67, 67, 230);
+    border-radius: 8px;
+    padding: 4px;
+    font-size: 10px;
+}
+
+.previousMonth {
+    font-size: 14px;
+    color: rgb(202, 194, 194);
+}
+
+.totalSale {
+    font-weight: 600;
+    font-style: 30px;
+}
+
+.costDoller {
+    font-size: 40px;
+    color: rgb(91, 91, 247);
+    font-weight: 700;
+}
+
+.costPersentage {
+    background-color: rgb(143, 241, 143);
+    color: #615d5d;
+    border-radius: 6px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+
+.monthPrevious {
+    color: rgb(123, 230, 16);
+}
+
+.ContainerCost {
+    border: 1px solid rgb(216, 209, 209);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+.AnalyticChart {
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.colll {
+    background: #dfd6d6b6;
+
+}
+
+
+/* right side css  */
+.profileSmall {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.containerProfielSmall {
+    border: 1px soild black;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 20px;
+    padding: 8px;
+}
+
+.ProfilesmallName {
+    font-weight: 500;
+}
+
+.ContainerPrimium {
+    margin-top: 50px;
+}
+
+.PrimiumText {
+    color: rgb(117, 117, 248);
+}
+
+.PrimiumBelowText {
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.totalContainerOfImg {
+    position: absolute;
+}
+
+.profileSmall1 {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+
+}
+
+.profileSmall2 {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+    margin-left: -7px;
+}
+
+.profileSmall3 {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+    margin-left: -8px;
+}
+
+.ProfileCount {
+    width: 27px;
+    height: 27px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-left: -8px;
+}
+
+.UpgradeContianer {
+    border: 1px solid rgb(199, 191, 191);
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    color: rgb(108, 108, 241);
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    font-weight: 500;
+    margin-top: 25px;
+}
+
+.GoogleMeetImg {
+    width: 45px;
+    height: 35px;
+    border-radius: 50%;
+}
+.googleMeet{
+    color: #615d5d;
+    padding-bottom: 5px;
+}
+
+/* calender css  */
+.week-days {
+    display: flex;
+    justify-content: space-between;
+}
+.ContainerMeet{
+    border-bottom: 1px solid rgb(221, 212, 212);
+}
+
+.day {
+    text-align: center;
+    padding: 8px;
+}
+
+.date {
+    text-align: center;
+    margin-top: 5px;
+    font-weight: 400;
+}
+
+.today {
+    background-color: rgb(101, 101, 233);
+    color: white;
+    /* You can adjust the text color for better visibility */
+    font-weight: bold;
+    border-radius: 50%;
+    width: 30px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* object-fit: cover; */
+}
