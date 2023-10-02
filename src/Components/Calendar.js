@@ -1,5 +1,5 @@
 import React from 'react';
-import './HomePage.css'; // You can create a CSS file for styling
+import './HomePage.css';
 
 class Calendar extends React.Component {
   constructor() {
@@ -10,19 +10,16 @@ class Calendar extends React.Component {
   }
 
   render() {
-    // Get the current month and year
     const currentMonthYear = this.state.currentDate.toLocaleDateString(undefined, {
       year: 'numeric',
       month: 'long',
     });
 
-    // Calculate the start and end dates of the current week
     const startOfWeek = new Date(this.state.currentDate);
     startOfWeek.setDate(this.state.currentDate.getDate() - this.state.currentDate.getDay());
     const endOfWeek = new Date(this.state.currentDate);
     endOfWeek.setDate(this.state.currentDate.getDate() + (6 - this.state.currentDate.getDay()));
 
-    // Create an array of days in the current week
     const daysInWeek = [];
     for (let i = 0; i < 7; i++) {
       const date = new Date(startOfWeek);

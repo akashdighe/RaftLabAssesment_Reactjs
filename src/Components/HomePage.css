@@ -1,3 +1,8 @@
+.hhh {
+    border: 3px solid red;
+    width: 100%;
+}
+
 .sideBarContainer {
     border-right: 1px solid rgb(233, 226, 226);
 }
@@ -237,17 +242,20 @@
     height: 35px;
     border-radius: 50%;
 }
-.googleMeet{
+
+.googleMeet {
     color: #615d5d;
     padding-bottom: 5px;
 }
 
 /* calender css  */
+/* Define styles for larger screens (e.g., desktop) */
 .week-days {
     display: flex;
     justify-content: space-between;
 }
-.ContainerMeet{
+
+.ContainerMeet {
     border-bottom: 1px solid rgb(221, 212, 212);
 }
 
@@ -265,7 +273,6 @@
 .today {
     background-color: rgb(101, 101, 233);
     color: white;
-    /* You can adjust the text color for better visibility */
     font-weight: bold;
     border-radius: 50%;
     width: 30px;
@@ -273,5 +280,35 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* object-fit: cover; */
 }
+
+/* Define styles for smaller screens (e.g., mobile and tablet) */
+@media screen and (max-width: 768px) {
+    .week-days {
+        align-items: center;
+        justify-content: start;
+        flex-wrap: wrap;
+
+    }
+
+    .day {
+        margin: 5px;
+    }
+
+    .today {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .RightSide {
+        padding: 60px;
+    }
+}
+
+
+
+.text.hidden {
+    display: none;
+  }

@@ -1,12 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SideBar from './SideBar'
 import ProfilePic from '../Icons/ProfilePic.jpg'
 import ProfilePic1 from '../Icons/ProfilePic1.jpg'
 import ProfilePic2 from '../Icons/ProfilePic2.jpg'
-import GoogleMeet1 from '../Icons/GoogleMeet1.jpg'
-import GoogleMeet2 from '../Icons/GoogleMeet2.jpg'
-import GoogleMeet3 from '../Icons/GoogleMeet3.jpg'
-import MoneyImg from '../Icons/MoneyImg.svg'
 import { FiSearch } from 'react-icons/fi';
 import { ResponsiveBar } from '@nivo/bar';
 import { Button, Dropdown, message, Space } from 'antd';
@@ -15,8 +11,11 @@ import { Table } from 'antd';
 import { GrNotification } from 'react-icons/gr';
 import { BiChevronDown } from 'react-icons/bi';
 import { BsArrowRight } from 'react-icons/bs';
-import { BsCameraVideo } from 'react-icons/bs';
+import { IoReorderFourOutline } from 'react-icons/io5';
 import Calendar from './Calendar'
+import Meeting from './Meeting'
+import MonthlyRevenue from './MonthlyRevenue'
+
 // table data 
 const columns = [
     {
@@ -54,7 +53,7 @@ const dataTable = [
     },
 
 ];
-//   optin data 
+//   option data 
 const data = [
     { country: '1-10 Aug', value: 30 },
     { country: '11-20 Aug', value: 60 },
@@ -64,6 +63,9 @@ const data = [
 ];
 
 const customColorScale = (index) => (index % 2 === 0 ? 'red' : ' rgb(107, 107, 221)');
+
+
+
 
 export default function HomePage() {
 
@@ -89,332 +91,280 @@ export default function HomePage() {
         onClick: handleMenuClick,
     };
 
+    // side 
+    const [textVisible, setTextVisible] = useState(true);
+
+    // Function to toggle text visibility
+    const toggleTextVisibility = () => {
+        setTextVisible(!textVisible);
+    };
+
+    // Use useEffect to set initial text visibility based on screen size
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 500) {
+                setTextVisible(false);
+            } else {
+                setTextVisible(true);
+            }
+        };
+
+        // Add a resize event listener to update text visibility on window resize
+        window.addEventListener('resize', handleResize);
+
+        // Initial check for screen size
+        handleResize();
+
+        // Clean up the event listener when the component unmounts
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     return (
-        <div className=''>
-            <div className='row col-12 '>
-                <div className='col-md-2'><SideBar /></div>
 
-                <div className='col-md-7 p-4'>
-                    <div className='d-flex justify-content-between  align-items-center'>
-                        <div className='d-flex gap-2 align-items-center'>
-                            <div>
-                                <img className='profilepicImg' src={ProfilePic} alt=''></img>
+        <div className='col-12 row '>
 
-                            </div>
-                            <div>
-                                <div className='headingtext'>
-                                    Good Evening Team!
-                                </div>
-                                <span className='headingSubText'>
-                                    Those who say it can't be done are usually interrupted by others doing it.
-                                </span>
-                            </div>
+
+            {/* Button to toggle text visibility */}
+            {/* <button onClick={toggleTextVisibility}>
+                    {textVisible ? 'X' : 'k'}
+                </button> */}
+
+            {/* Conditional rendering of text based on state */}
+            {textVisible && (
+                <div className='col-md-2 col-sm-12'>
+                    <SideBar toggleTextVisibility={toggleTextVisibility} textVisible={textVisible} />
+                </div>
+            )}
+
+
+
+
+
+            <div className='col-md-7 col-sm-12 p-4'>
+                <div className='d-flex justify-content-between  align-items-center'>
+                    <div className='d-flex gap-2 align-items-center'>
+                        <button onClick={toggleTextVisibility}>
+                            {textVisible ? '' : <IoReorderFourOutline/>}
+                        </button>
+                        <div>
+                            <img className='profilepicImg' src={ProfilePic} alt=''></img>
+
                         </div>
                         <div>
-                            <FiSearch />
+                            <div className='headingtext'>
+                                Good Evening Team!
+                            </div>
+                            <span className='headingSubText'>
+                                Those who say it can't be done are usually interrupted by others doing it.
+                            </span>
                         </div>
-                    </div>
-
-                    <div className='ContanerPriceAction d-flex justify-content-between '>
-                        <div className='d-flex gap-2 align-items-center'>
-                            <div>
-                                <img className='profilepicImg' src={MoneyImg} alt=''></img>
-                            </div>
-                            <div >
-                                <div className='monethlyRevenue'>Monthly Revenue</div>
-                                <div className='mt-1'>
-                                    <span className='Doller  mr-2'>$6.750</span>
-                                    <span className='dollerPersentage'>+1.4%</span>
-                                </div>
-                                <div className='mt-1'>
-                                    <span className='previousMonth'>Previous month </span>
-                                    <span className='previousDoller'>$3.1k</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='d-flex gap-2 align-items-center'>
-                            <div>
-                                <img className='profilepicImg' src={MoneyImg} alt=''></img>
-                            </div>
-                            <div >
-                                <div className='monethlyRevenue'>Monthly Revenue</div>
-                                <div className='mt-1'>
-                                    <span className='Doller  mr-2'>$6.750</span>
-                                    <span className='dollerPersentage'>+1.4%</span>
-                                </div>
-                                <div className='mt-1'>
-                                    <span className='previousMonth'>Previous month </span>
-                                    <span className='previousDoller'>$3.1k</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='d-flex gap-2 align-items-center'>
-                            <div>
-                                <img className='profilepicImg' src={MoneyImg} alt=''></img>
-                            </div>
-                            <div >
-                                <div className='monethlyRevenue'>Monthly Revenue</div>
-                                <div className='mt-1'>
-                                    <span className='Doller  mr-2'>$6.750</span>
-                                    <span className='dollerPersentage'>+1.4%</span>
-                                </div>
-                                <div className='mt-1'>
-                                    <span className='previousMonth'>Previous month </span>
-                                    <span className='previousDoller'>$3.1k</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className='ContainerCost  d-flex flex-wrap'>
-                        <div>
-                            <div className='totalSale'>Total Sales & Cost</div>
-                            <div className='previousMonth'>Last 60 days</div>
-                            <div className='mt-3'>
-                                <span className='costDoller mt-1'>$956.82k</span>
-                                <span className='costPersentage '>+5.4%</span>
-                            </div>
-                            <div>
-                                <span className='monthPrevious'>+8.20k</span>
-                                <span className='previousMonth'> vs prev 60 days</span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div className='AnalyticChart'>Analytic</div>
-                            <div style={{ height: '200px', width: '430px' }}>
-                                <ResponsiveBar
-                                    data={data}
-                                    keys={['value']}
-                                    indexBy="country"
-                                    margin={{ top: 50, right: 30, bottom: 50, left: 60 }}
-                                    padding={0.3}
-                                    colors={customColorScale}
-                                    axisTop={null}
-                                    axisRight={null}
-                                    axisBottom={{
-
-                                        tickSize: 5,
-                                        tickPadding: 5,
-                                        tickRotation: 0,
-
-                                        legendPosition: 'middle',
-                                        legendOffset: 40,
-                                    }}
-                                    axisLeft={{
-                                        tickSize: 5,
-                                        tickValues: [0, 20, 40, 60],
-                                        tickPadding: 5,
-                                        tickRotation: 0,
-                                        legendPosition: 'middle',
-                                        legendOffset: -50,
-                                    }}
-                                    labelSkipWidth={12}
-                                    labelSkipHeight={12}
-                                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
-                                    legends={[
-                                        {
-                                            dataFrom: 'keys',
-                                            anchor: 'top-right',
-                                            direction: 'column',
-                                            justify: false,
-                                            translateX: 120,
-                                            translateY: 0,
-                                            itemsSpacing: 2,
-                                            itemWidth: 100,
-                                            itemHeight: 20,
-                                            itemDirection: 'left-to-right',
-                                            itemOpacity: 0.85,
-                                            symbolSize: 20,
-                                            effects: [
-                                                {
-                                                    on: 'hover',
-                                                    style: {
-                                                        itemOpacity: 1,
-                                                    },
-                                                },
-                                            ],
-                                        },
-                                    ]}
-                                    animate={true}
-                                    motionStiffness={90}
-                                    motionDamping={15}
-                                />
-                            </div>
-                        </div>
-
-
                     </div>
                     <div>
-                        <div className='d-flex flex-wrap justify-content-between align-items-center'>
-                            <h3 className='mt-4'>Transasyion History</h3>
-                            <div>
-                                <Dropdown menu={menuProps} >
-                                    <Button>
-                                        <Space>
-                                            Month
-                                            <DownOutlined />
-                                        </Space>
-                                    </Button>
-                                </Dropdown>
-
-                            </div>
-                        </div>
-                        <div className='d-flex flex-wrap  gap-3 mt-2'>
-                            <div>
-                                <Dropdown menu={menuProps} className='colll'>
-                                    <Button>
-                                        <Space>
-                                            Recepient
-                                            <DownOutlined />
-                                        </Space>
-                                    </Button>
-                                </Dropdown>
-
-                            </div>
-                            <div>
-                                <Dropdown menu={menuProps} className='colll'>
-                                    <Button>
-                                        <Space>
-                                            Amount
-                                            <DownOutlined />
-                                        </Space>
-                                    </Button>
-                                </Dropdown>
-
-                            </div>
-                            <div>
-                                <Dropdown menu={menuProps} className='colll'>
-                                    <Button>
-                                        <Space>
-                                            Status
-                                            <DownOutlined />
-                                        </Space>
-                                    </Button>
-                                </Dropdown>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className='mt-4'>
-
-                        <Table
-                            columns={columns}
-                            dataSource={dataTable}
-                            size="small"
-                            style={{ background: 'white' }}
-                        />
+                        <FiSearch />
                     </div>
                 </div>
 
+                {/* Below  Component showing MonthlyRevenue */}
+                <MonthlyRevenue />
 
 
-
-
-
-
-                {/* below code for right side bar  */}
-                <div className='col-md-3 p-4'>
-                    <div className='d-flex mt-2 align-items-center justify-content-between flex-wrap'>
+                <div className='ContainerCost   d-flex flex-wrap'>
+                    <div>
+                        <div className='totalSale'>Total Sales & Cost</div>
+                        <div className='previousMonth'>Last 60 days</div>
+                        <div className='mt-3'>
+                            <span className='costDoller mt-1'>$956.82k</span>
+                            <span className='costPersentage '>+5.4%</span>
+                        </div>
                         <div>
-                            <GrNotification />
-                        </div>
-                        <div className='d-flex align-items-center gap-2 containerProfielSmall'>
-
-                            <div>
-                                <img className='profileSmall' src={ProfilePic} alt=''></img>
-                            </div>
-                            <h7 className="ProfilesmallName">Jhontoson</h7>
-                            <div>
-                                <BiChevronDown />
-                            </div>
+                            <span className='monthPrevious'>+8.20k</span>
+                            <span className='previousMonth'> vs prev 60 days</span>
                         </div>
                     </div>
-                    <div className='col-md-8 ContainerPrimium'>
-                        <div className='PrimiumText'>Primium Access</div>
-                        <div className='PrimiumBelowText'>
-                            Take Back Your Creative Control
 
+                    <div>
+                        <div className='AnalyticChart'>Analytic</div>
+                        <div style={{ height: '200px', width: '300px' }}>
+                            <ResponsiveBar
+                                data={data}
+                                keys={['value']}
+                                indexBy="country"
+                                margin={{ top: 50, right: 30, bottom: 50, left: 60 }}
+                                padding={0.5}
+                                colors={customColorScale}
+                                axisTop={null}
+                                axisRight={null}
+                                axisBottom={{
+
+                                    tickSize: 5,
+                                    tickPadding: 5,
+                                    tickRotation: 0,
+
+                                    legendPosition: 'middle',
+                                    legendOffset: 40,
+                                }}
+                                axisLeft={{
+                                    tickSize: 5,
+                                    tickValues: [0, 20, 40, 60],
+                                    tickPadding: 5,
+                                    tickRotation: 0,
+                                    legendPosition: 'middle',
+                                    legendOffset: -50,
+                                }}
+                                labelSkipWidth={12}
+                                labelSkipHeight={12}
+                                labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                                legends={[
+                                    {
+                                        dataFrom: 'keys',
+                                        anchor: 'top-right',
+                                        direction: 'column',
+                                        justify: false,
+                                        translateX: 120,
+                                        translateY: 0,
+                                        itemsSpacing: 2,
+                                        itemWidth: 100,
+                                        itemHeight: 20,
+                                        itemDirection: 'left-to-right',
+                                        itemOpacity: 0.85,
+                                        symbolSize: 20,
+                                        effects: [
+                                            {
+                                                on: 'hover',
+                                                style: {
+                                                    itemOpacity: 1,
+                                                },
+                                            },
+                                        ],
+                                    },
+                                ]}
+                                animate={true}
+                                motionStiffness={90}
+                                motionDamping={15}
+                            />
                         </div>
                     </div>
-                    <div className='d-flex'>
-                        <img className='profileSmall1' src={ProfilePic} alt=''></img>
-                        <img className='profileSmall2' src={ProfilePic1} alt=''></img>
-                        <img className='profileSmall3' src={ProfilePic2} alt=''></img>
-                        <span className='ProfileCount'>+10</span>
-                    </div>
-                    <div className='d-flex mt-3 align-items-center gap-2'>
-                        <span className='headingSubText'>The Profeshional Platform</span>
-                        <span><BiChevronDown /></span>
-                    </div>
-                    <div className='d-flex UpgradeContianer'>
-                        <div>Upgrade Now</div>
-                        <div><BsArrowRight /></div>
-                    </div>
-                    <div className='mt-4'>
-                        <Calendar />
-                    </div>
 
-                    <div className='d-flex mt-4 ContainerMeet  gap-4 align-items-center '>
+
+                </div>
+                <div>
+                    <div className='d-flex flex-wrap justify-content-between align-items-center'>
+                        <h3 className='mt-4'>Transasyion History</h3>
                         <div>
-                            <img className='GoogleMeetImg' src={GoogleMeet1} alt=''></img>
+                            <Dropdown menu={menuProps} >
+                                <Button>
+                                    <Space>
+                                        Month
+                                        <DownOutlined />
+                                    </Space>
+                                </Button>
+                            </Dropdown>
 
                         </div>
-                        <div className='w-100'>
-                            <h6>Meeting With Client</h6>
-                            <div className='d-flex flex-wrap gap-2 align-items-center justify-content-between '>
-                                <div className='d-flex flex-wrap gap-2 align-items-center'>
-                                    <BsCameraVideo />
-                                    <span className='googleMeet'>Google Meet</span>
-                                </div>
-                                <span className='googleMeet'>
-                                    12 pm
-                                </span>
-                            </div>
-                        </div>
                     </div>
-                    <div className='d-flex mt-4 ContainerMeet  gap-4 align-items-center '>
+                    <div className='d-flex flex-wrap  gap-3 mt-2'>
                         <div>
-                            <img className='GoogleMeetImg' src={GoogleMeet2} alt=''></img>
+                            <Dropdown menu={menuProps} className='colll'>
+                                <Button>
+                                    <Space>
+                                        Recepient
+                                        <DownOutlined />
+                                    </Space>
+                                </Button>
+                            </Dropdown>
 
                         </div>
-                        <div className='w-100'>
-                            <h6>Meeting With Client</h6>
-                            <div className='d-flex flex-wrap gap-2 align-items-center justify-content-between '>
-                                <div className='d-flex flex-wrap gap-2 align-items-center'>
-                                    <BsCameraVideo />
-                                    <span className='googleMeet'>Weekly Report</span>
-                                </div>
-                                <span className='googleMeet'>
-                                    12 pm
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='d-flex mt-4 ContainerMeet  gap-4 align-items-center '>
                         <div>
-                            <img className='GoogleMeetImg' src={GoogleMeet3} alt=''></img>
+                            <Dropdown menu={menuProps} className='colll'>
+                                <Button>
+                                    <Space>
+                                        Amount
+                                        <DownOutlined />
+                                    </Space>
+                                </Button>
+                            </Dropdown>
 
                         </div>
-                        <div className='w-100'>
-                            <h6>Meeting With Client</h6>
-                            <div className='d-flex flex-wrap gap-2 align-items-center justify-content-between '>
-                                <div className='d-flex flex-wrap gap-2 align-items-center'>
-                                    <BsCameraVideo />
-                                    <span className='googleMeet'>Daily scrum Meeting</span>
-                                </div>
-                                <span className='googleMeet'>
-                                    12 pm
-                                </span>
-                            </div>
+                        <div>
+                            <Dropdown menu={menuProps} className='colll'>
+                                <Button>
+                                    <Space>
+                                        Status
+                                        <DownOutlined />
+                                    </Space>
+                                </Button>
+                            </Dropdown>
+
                         </div>
                     </div>
+                </div>
 
+                <div className='mt-4'>
 
+                    <Table
+                        columns={columns}
+                        dataSource={dataTable}
+                        size="small"
+                        style={{ background: 'white' }}
+                    />
                 </div>
             </div>
+
+
+
+
+
+
+
+            {/* below code for right side bar  */}
+            <div className='col-md-3 col-sm-12 p-4 RightSide"'>
+                <div className='d-flex mt-2 align-items-center justify-content-between flex-wrap'>
+                    <div>
+                        <GrNotification />
+                    </div>
+                    <div className='d-flex align-items-center gap-2 containerProfielSmall'>
+
+                        <div>
+                            <img className='profileSmall' src={ProfilePic} alt=''></img>
+                        </div>
+                        <h7 className="ProfilesmallName">Jhontoson</h7>
+                        <div>
+                            <BiChevronDown />
+                        </div>
+                    </div>
+                </div>
+                <div className='col-md-8 ContainerPrimium'>
+                    <div className='PrimiumText'>Primium Access</div>
+                    <div className='PrimiumBelowText'>
+                        Take Back Your Creative Control
+
+                    </div>
+                </div>
+                <div className='d-flex'>
+                    <img className='profileSmall1' src={ProfilePic} alt=''></img>
+                    <img className='profileSmall2' src={ProfilePic1} alt=''></img>
+                    <img className='profileSmall3' src={ProfilePic2} alt=''></img>
+                    <span className='ProfileCount'>+10</span>
+                </div>
+                <div className='d-flex mt-3 align-items-center gap-2'>
+                    <span className='headingSubText'>The Profeshional Platform</span>
+                    <span><BiChevronDown /></span>
+                </div>
+                <div className='d-flex UpgradeContianer'>
+                    <div>Upgrade Now</div>
+                    <div><BsArrowRight /></div>
+                </div>
+                <div className='mt-4'>
+                    <Calendar />
+                </div>
+
+                {/* below Component Showing Meeting Times Component */}
+                <Meeting />
+
+            </div>
         </div>
+
     )
 }
